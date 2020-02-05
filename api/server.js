@@ -4,6 +4,8 @@ const express = require('express');
 const server = express();
 const cors = require('cors');
 
+const knexConnection = require('../database/dbConfig');
+
 // const reviews = require('./review_router');
 const stylists = require('./stylist_router');
 const customers = require('./customer_router');
