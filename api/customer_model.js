@@ -3,7 +3,7 @@ const db = require('../database/dbConfig');
 module.exports = {
   create,
   findById,
-  findByUsername,
+  findByEmail,
 };
 
 function create(customer) {
@@ -18,8 +18,8 @@ function findById(id) {
     .first();
 }
 
-function findByUsername(username) {
+function findByEmail(email) {
   return db('customers')
-    .where({ username })
+    .where({ email })
     .first();
 }

@@ -8,9 +8,9 @@ const secrets = require('../auth/secrets');
 //login
 
 router.post('/login', (req, res) => {
-  let { username, password } = req.body;
+  let { email, password } = req.body;
   customer
-    .findByUsername(username)
+    .findByUsername(email)
     .first()
     .then(customer => {
       if (customer && bcrypt.compareSync(password, customer.password)) {
@@ -29,7 +29,7 @@ router.post('/login', (req, res) => {
 function generateToken(user) {
   const payload = {
     subject: user.id,
-    username: user.username,
+    email: user.email,
   };
   const options = {
     expiresIn: '1d',
@@ -40,15 +40,17 @@ function generateToken(user) {
 
 router.post('/', (req, res) => {
   console.log(req.body);
-  let { username, password, location, email_address } = req.body;
+  let { email, password, first_name, last_name, city, state } = req.body;
 
   const hash = bcrypt.hashSync(password, 12);
   customer
     .create({
-      username: username,
+      email: email,
       password: hash,
-      location: location,
-      email_address: email_address,
+      first_name: first_name,
+      last_name: last_name,
+      city: city,
+      state: state,
     })
     .then(savedCustomer => {
       res.status(201).json(savedCustomer);
