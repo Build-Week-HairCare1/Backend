@@ -7,10 +7,9 @@ module.exports = {
 };
 
 function create(customer) {
-  return db('customers')
-    .insert(customer)
-    .then(ids => ({ id: ids[0] }));
+  return db('customers').insert(customer, 'id');
 }
+// .then(ids => ({ id: ids[0] }));
 
 function findById(id) {
   return db('customers')

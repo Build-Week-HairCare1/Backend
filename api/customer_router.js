@@ -10,7 +10,7 @@ const secrets = require('../auth/secrets');
 router.post('/login', (req, res) => {
   let { email, password } = req.body;
   customer
-    .findByUsername(email)
+    .findByEmail(email)
     .first()
     .then(customer => {
       if (customer && bcrypt.compareSync(password, customer.password)) {
@@ -38,6 +38,7 @@ function generateToken(user) {
   return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
+// register a new customer
 router.post('/', (req, res) => {
   console.log(req.body);
   let { email, password, first_name, last_name, city, state } = req.body;
