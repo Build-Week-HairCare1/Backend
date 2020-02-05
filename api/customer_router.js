@@ -61,5 +61,14 @@ router.post('/', (req, res) => {
       res.status(500).json(error);
     });
 });
+// get ALL customers
+router.get('/', (req, res) => {
+  customer
+    .find()
+    .then(customer => {
+      res.json(customer);
+    })
+    .catch(err => res.send(err));
+});
 
 module.exports = router;

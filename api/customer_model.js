@@ -2,6 +2,7 @@ const db = require('../database/dbConfig');
 
 module.exports = {
   create,
+  find,
   findById,
   findByEmail,
 };
@@ -10,6 +11,10 @@ function create(customer) {
   return db('customers').insert(customer, 'id');
 }
 // .then(ids => ({ id: ids[0] }));
+
+function find() {
+  return db('customers').select('id', 'email', 'password');
+}
 
 function findById(id) {
   return db('customers')
