@@ -1,15 +1,33 @@
 module.exports = {
   development: {
-    client: 'pg',
-    version: '7.2',
-    connection: {
-      host: 'ec2-3-220-86-239.compute-1.amazonaws.com',
-      user: 'quonubylmywbgo',
-      password: 'c31f07f6045bfea0ae265662bd8434ea8bb2f6f6d6149aef33d7140bcf71561d',
-      database: 'deonvnfdjo1c45',
-      port: '5432',
-    },
+    client: 'sqlite3',
     useNullAsDefault: true,
+    connection: {
+      filename: './database/hc.db3',
+    },
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done);
+      },
+    },
+    migrations: {
+      directory: './database/migrations',
+    },
+    seeds: {
+      directory: './database/seeds',
+    },
+  },
+  production: {
+    client: 'pg',
+    useNullAsDefault: true,
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      directory: './database/migrations',
+    },
     seeds: {
       directory: './database/seeds',
     },

@@ -10,7 +10,6 @@ exports.seed = function(knex) {
           customer_id: 2,
           stylist_id: 3,
           stars: 0,
-          photo_url: '',
         },
 
         {
@@ -20,7 +19,6 @@ exports.seed = function(knex) {
           customer_id: 2,
           stylist_id: 3,
           stars: 0,
-          photo_url: '',
         },
 
         {
@@ -30,7 +28,6 @@ exports.seed = function(knex) {
           customer_id: 2,
           stylist_id: 3,
           stars: 0,
-          photo_url: '',
         },
 
         {
@@ -40,7 +37,6 @@ exports.seed = function(knex) {
           customer_id: 2,
           stylist_id: 3,
           stars: 0,
-          photo_url: '',
         },
       ]);
     });
