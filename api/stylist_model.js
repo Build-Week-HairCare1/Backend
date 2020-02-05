@@ -1,6 +1,7 @@
 const db = require('../database/dbConfig');
 
 module.exports = {
+  find,
   findById,
   create,
   remove,
@@ -8,6 +9,10 @@ module.exports = {
   findByCity,
   findByEmail,
 };
+
+function find() {
+  return db('stylists').select('id', 'email', 'password', 'first_name', 'last_name', 'city', 'state');
+}
 
 function findById(id) {
   return db('stylists')

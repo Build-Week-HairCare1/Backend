@@ -114,7 +114,7 @@ router.put('/:id', restricted, (req, res) => {
 // find by city
 router.get('/location/:city', restricted, (req, res) => {
   stylist
-    .findByCity(req.params['location'])
+    .findByCity(req.params['city'])
     .then(data => {
       if (data === undefined) {
         res.status(404).json({ message: 'Stylists with the specified location do not exist.' });
@@ -123,6 +123,18 @@ router.get('/location/:city', restricted, (req, res) => {
       }
     })
     .catch(err => res.status(500).json({ error: 'The location information could not be retrieved.' }));
+});
+
+// get ALL stylists
+
+// get ALL customers
+router.get('/', (req, res) => {
+  stylist
+    .find()
+    .then(stylist => {
+      res.json(stylist);
+    })
+    .catch(err => res.send(err));
 });
 
 module.exports = router;
