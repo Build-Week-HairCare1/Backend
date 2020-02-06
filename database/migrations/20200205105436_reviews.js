@@ -9,7 +9,7 @@ exports.up = function(knex) {
       .references('id')
       .inTable('customers')
       .onUpdate('CASCADE')
-      .onDelete('CASCADE');
+      .onDelete('RESTRICT');
 
     reviews
       .integer('stylist_id')
@@ -18,7 +18,7 @@ exports.up = function(knex) {
       .references('id')
       .inTable('stylists')
       .onUpdate('CASCADE')
-      .onDelete('CASCADE');
+      .onDelete('RESTRICT');
 
     reviews
       .string('title', 128)
