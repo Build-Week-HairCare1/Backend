@@ -4,39 +4,31 @@ exports.seed = function(knex) {
     .then(function() {
       return knex('reviews').insert([
         {
-          id: 1,
           title: 'Amazing stylist!!',
           description: 'Gabi is a phenomenal stylist. She brough so much color back to my dry, dull hair!',
           customer_id: 2,
-          stylist_id: 3,
-          stars: 0,
+          stylist_id: 1,
         },
 
         {
-          id: 1,
-          title: 'Amazing stylist!!',
+          title: 'She is the best!!',
           description: 'Gabi is a phenomenal stylist. She brough so much color back to my dry, dull hair!',
-          customer_id: 2,
-          stylist_id: 3,
-          stars: 0,
+          customer_id: 1,
+          stylist_id: 1,
         },
 
         {
-          id: 1,
-          title: 'Amazing stylist!!',
+          title: 'stylist!!',
           description: 'Gabi is a phenomenal stylist. She brough so much color back to my dry, dull hair!',
-          customer_id: 2,
-          stylist_id: 3,
-          stars: 0,
+          customer_id: 3,
+          stylist_id: 1,
         },
 
         {
-          id: 1,
-          title: 'Amazing stylist!!',
+          title: 'Amazing!!',
           description: 'Gabi is a phenomenal stylist. She brough so much color back to my dry, dull hair!',
-          customer_id: 2,
+          customer_id: 1,
           stylist_id: 3,
-          stars: 0,
         },
       ]);
     });

@@ -8,9 +8,13 @@ module.exports = {
 };
 
 function create(customer) {
-  return db('customers').insert(customer, 'id');
+  return db('customers')
+    .insert(customer, 'id')
+    .then(ids => {
+      [id] = ids;
+      return findById(id);
+    });
 }
-// .then(ids => ({ id: ids[0] }));
 
 function find() {
   return db('customers').select('id', 'email', 'password');
